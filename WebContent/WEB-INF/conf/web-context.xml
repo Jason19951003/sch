@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">	
+	
+	<context:property-placeholder location="file:H:/webapp/db.properties" />		
+	
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">		
+		<property name="driverClass" value="${jdbc.Driver}" />
+		<property name="jdbcUrl" value="${jdbc.Url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		
+		<property name="maxPoolSize" value="30" />
+		<property name="minPoolSize" value="10" />
+		
+		<property name="autoCommitOnClose" value="false" />		
+		<property name="checkoutTimeout" value="10000" />		
+		<property name="acquireRetryAttempts" value="2" />
+	</bean>		
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">		
+		<property name="dataSource" ref="dataSource" />		
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<!-- 需有1個以上的文件才能使用 -->
+		<property name="mapperLocations" value="classpath:sch/web/dao/mapper/*.xml" />
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">		
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />		
+		<property name="basePackage" value="sch.web.dao" />
+	</bean>
+	<!-- 使用mvc:annotation-driven可代替(註解的適配器、註解得映射器)的配置
+		 使用此方法可以不用配置json交互的bean
+	-->
+	<mvc:annotation-driven/>
+	<!-- 註解掃描 -->
+	<context:component-scan base-package="sch.web"></context:component-scan>
+	<context:component-scan base-package="sch.core"></context:component-scan>
+	<!-- 使用AOP的註解 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+    <!-- 上傳文件使用 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value>5242880</value>
+		</property>
+	</bean>
+</beans>
