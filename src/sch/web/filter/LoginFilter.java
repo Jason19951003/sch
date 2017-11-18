@@ -8,12 +8,11 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.PropertyConfigurator;
-
-public class LogFilter implements Filter {
-
+public class LoginFilter implements Filter {
+	
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -22,14 +21,18 @@ public class LogFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest servletrequest, ServletResponse servletresponse, FilterChain chain)
-			throws IOException, ServletException {
+			throws IOException, ServletException {		
+		HttpServletRequest request = (HttpServletRequest) servletrequest;
+		HttpSession session = request.getSession();
+		session.removeAttribute("stu_user");
+		session.removeAttribute("tch_user");		
 		
+		chain.doFilter(servletrequest, servletresponse);
 	}
 
 	@Override
 	public void init(FilterConfig config) throws ServletException {
-		String location = config.getInitParameter("location");
-		PropertyConfigurator.configure(location);
+		
 	}
 
 }

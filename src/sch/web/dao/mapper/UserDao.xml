@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace="sch.web.dao.UserDao">
+	<select id="select_stu" parameterType="HashMap" resultType="HashMap">
+		select * from stu_info;
+	</select>
+	
+	<select id="select_tch" parameterType="HashMap" resultType="HashMap">
+		select * from tch_info;
+	</select>
+	
+	<select id="stuLogin" parameterType="HashMap" resultType="HashMap">
+		select stu_no,stu_password from stu_info
+		where stu_no = #{stu_no} and stu_password = #{stu_password};
+	</select>
+	
+	<select id="tchLogin" parameterType="HashMap" resultType="HashMap">
+		select tch_no,tch_password from tch_info
+		where tch_no = #{tch_no} and tch_password = #{tch_password};
+	</select>
+</mapper>
