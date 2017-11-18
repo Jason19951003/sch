@@ -73,6 +73,19 @@
 			}
 		}
 	}
+	
+	function clean(check) {
+		$("input").each(function() {
+			$(this).next().hide();
+		});
+		
+		if(check == 'stu') {
+			$("#stu_form").trigger('reset');
+		}
+		
+		if(check == 'tch')
+			$("#tch_form").trigger('reset');
+	}
 </script>
 </head>
 <body>
@@ -92,7 +105,7 @@
 					帳號：<input type="text" name="stu_no"><span id="validate" style="color:red;">請輸入帳號</span><br><br>
 					密碼：<input type="password" name="stu_password"><span id="validate" style="color:red;">請輸入密碼</span><br><br>
 					<a href="#" class="button glow" onclick="login('stu');"><span>確認登入</span></a>
-					<a href="#" class="button glow"><span>清除資料</span></a>
+					<a href="#" class="button glow" onclick="clean('stu')"><span>清除資料</span></a>
 				</form>
 			</div>
 			<div id="tab2" class="tab_content">
@@ -100,7 +113,7 @@
 					帳號：<input type="text" name="tch_no"><span id="validate" style="color:red;">請輸入帳號</span><br><br>
 					密碼：<input type="password" name="tch_password"><span id="validate" style="color:red;">請輸入密碼</span><br><br>
 					<a href="#" class="button glow" onclick="login('tch');"><span>確認登入</span></a>
-					<a href="#" class="button glow"><span>清除資料</span></a>
+					<a href="#" class="button glow" onclick="clean('tch')"><span>清除資料</span></a>
 				</form>
 			</div>
 		</div>
