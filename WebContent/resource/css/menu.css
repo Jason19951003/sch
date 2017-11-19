@@ -1,0 +1,43 @@
+@CHARSET "UTF-8";
+ul,li{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}	
+.item {
+	background-image: url("/sch/resource/image/grey.png");	
+	height: 32px;		
+	text-align: left;
+	line-height: 35px;		
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+	text-indent: 10px;
+}
+.direction {
+	background-image: url("/sch/resource/image/right.png");
+	float: left;
+	height: 32px;
+	width: 40px;
+}
+.detail {		
+	left: 40px;
+	background-color: silver;
+	height: 32px;
+	text-align: left;
+	line-height: 35px;		
+	text-indent: 47px;
+	border: 1px solid black;
+}
+.detail:hover {
+	background-color: white;		
+}	
+.detail a {
+	font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+	text-decoration: none;
+	color: black;
+	height: 32px;
+	width : 100%;
+	display: block;/*將超連結設為區塊模式*/
+}
+.controll {
+	cursor: pointer;
+}

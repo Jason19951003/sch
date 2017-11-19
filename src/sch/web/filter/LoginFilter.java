@@ -25,7 +25,8 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) servletrequest;
 		HttpSession session = request.getSession();
 		session.removeAttribute("stu_user");
-		session.removeAttribute("tch_user");		
+		session.removeAttribute("tch_user");
+		session.removeAttribute("ERROR");
 		
 		chain.doFilter(servletrequest, servletresponse);
 	}

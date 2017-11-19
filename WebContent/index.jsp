@@ -40,51 +40,27 @@
 		});
 	});
 	
-	function login(check) {
-		if(check == 'stu') {
-			var stu_no = $("#stu_form input[name=stu_no]");
-			var stu_password = $("#stu_form input[name=stu_password]");
-			
-			stu_no.next().hide();
-			stu_password.next().hide();
-			
-			if(stu_no.val() == '')
-				stu_no.next().show();
-			if(stu_password.val() == '')
-				stu_password.next().show();
-			if(stu_no.val() != '' && stu_password.val() != '') {				
-				$("#stu_form").submit();
-			}
-		}
+	function login(str) {
+		var str_no = $("#" + str + "_form input[name=" + str + "_no]");
+		var str_password = $("#" + str + "_form input[name=" + str + "_password]");
 		
-		if(check == 'tch') {
-			var tch_no = $("#tch_form input[name=tch_no]");
-			var tch_password = $("#tch_form input[name=tch_password]");
-			
-			tch_no.next().hide();
-			tch_password.next().hide();
-			
-			if(tch_no.val() == '')
-				tch_no.next().show();
-			if(tch_password.val() == '')
-				tch_password.next().show();
-			if(tch_no.val() != '' && tch_password.val() != '') {				
-				$("#tch_form").submit();
-			}
+		str_no.next().hide();
+		str_password.next().hide();
+		
+		if(str_no.val() == '')
+			str_no.next().show();
+		if(str_password.val() == '')
+			str_password.next().show();
+		if(str_no.val() != '' && str_password.val() != '') {				
+			$("#" + str + "_form").submit();
 		}
 	}
 	
-	function clean(check) {
+	function clean(str) {
 		$("input").each(function() {
 			$(this).next().hide();
 		});
-		
-		if(check == 'stu') {
-			$("#stu_form").trigger('reset');
-		}
-		
-		if(check == 'tch')
-			$("#tch_form").trigger('reset');
+		$("#" + str + "_form").trigger('reset');
 	}
 </script>
 </head>
@@ -117,6 +93,6 @@
 				</form>
 			</div>
 		</div>
-	</div>	
+	</div>
 </body>
 </html>

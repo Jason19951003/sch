@@ -4,7 +4,7 @@
 
 <mapper namespace="sch.web.dao.UserDao">
 	<select id="select_stu" parameterType="HashMap" resultType="HashMap">
-		select * from stu_info;
+		SELECT * FROM stu_info;
 	</select>
 	
 	<select id="select_tch" parameterType="HashMap" resultType="HashMap">

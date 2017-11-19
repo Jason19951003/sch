@@ -1,4 +1,4 @@
-package sch.web.stu.controller;
+package sch.web.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +34,8 @@ public class loginController {
 		Map<String, Object> rtn = loginManger.stuLogin(paramMap);
 		
 		if(rtn != null) {			
-			session.setAttribute("stu_user", rtn.get("stu_no"));			
+			session.setAttribute("stu_user", rtn.get("stu_no"));
+			request.getRequestDispatcher("/sch/global/index.jsp").forward(request, response);
 		} else {
 			request.setAttribute("ERROR", "帳號密碼錯誤");
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -53,8 +54,9 @@ public class loginController {
 		paramMap.put("tch_password", tch_password);
 		Map<String, Object> rtn = loginManger.tchLogin(paramMap);
 		
-		if(rtn != null) {			
-			session.setAttribute("tch_user", rtn.get("stu_no"));			
+		if(rtn != null) {
+			session.setAttribute("tch_user", rtn.get("stu_no"));
+			request.getRequestDispatcher("/sch/global/index.jsp").forward(request, response);
 		} else {
 			request.setAttribute("ERROR", "帳號密碼錯誤");
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
