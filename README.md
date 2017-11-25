@@ -4,7 +4,7 @@
   <p>作業系統：windows10 專業版</p>
   <p>IDE：Mars Release (4.5.0)</p>
   <p>JDK：1.8.0.144</p>
-  <p>使用框架：Spring4.3.9、mybatis3.4.5、jquery-3.2.1、Buttons.css</p>
+  <p>使用框架：Spring3.1.0、mybatis3.4.5、jquery-3.2.1、Buttons.css</p>
   <p>資料庫：MySQL 5.7版</p>
 <p>2.進度</p>
   <p>2017/11/17 將所需的jar檔與package建立完畢與測試框架基本功能是否正常運行</p>

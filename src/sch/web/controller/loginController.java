@@ -12,54 +12,47 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import sch.web.controller.ResponseBean.ReturnType;
 import sch.web.manager.loginManager;
 
 @Controller
 @Scope("prototype")
-@RequestMapping("/login")
-public class loginController {
+@RequestMapping("/login.do")
+public class loginController extends AbstractController {
 	@Autowired
-	private loginManager loginManger;
+	private loginManager loginManger;	
 	
-	@RequestMapping("/stuLogin.do")
-	public void stuLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Map<String, Object> paramMap = new HashMap<String, Object>();		
-		HttpSession session = request.getSession();		
+	public void stuLogin(RequestBean requestBean, ResponseBean responseBean) throws Exception {
+		responseBean.setReturnType(ReturnType.SERVER_PAGE_FORWARD);
+		Map<String, Object> paramMap = requestBean.getResultMap();
+		HttpSession session = requestBean.getSession();
 		
-		String stu_no = request.getParameter("stu_no");
-		String stu_password = request.getParameter("stu_password");
 		
-		paramMap.put("stu_no", stu_no);
-		paramMap.put("stu_password", stu_password);
 		Map<String, Object> rtn = loginManger.stuLogin(paramMap);
 		
 		if(rtn != null) {			
-			session.setAttribute("stu_user", rtn.get("stu_no"));
-			request.getRequestDispatcher("/sch/global/index.jsp").forward(request, response);
-		} else {
-			request.setAttribute("ERROR", "帳號密碼錯誤");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			session.setAttribute("stu_user", rtn.get("stu_no"));			
+			responseBean.setReturnPage("/sch/global/index.jsp");
+			
+		} else {			
+			requestBean.setAttribute("ERROR", "帳號密碼錯誤");
+			responseBean.setReturnPage("/index.jsp");			
 		}
-	}
+	}	
 	
-	@RequestMapping("/tchLogin.do")
-	public void tchLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Map<String, Object> paramMap = new HashMap<String, Object>();		
-		HttpSession session = request.getSession();		
+	public void tchLogin(RequestBean requestBean, ResponseBean responseBean) throws Exception {
+		responseBean.setReturnType(ReturnType.SERVER_PAGE_FORWARD);
+		Map<String, Object> paramMap = requestBean.getResultMap();		
+		HttpSession session = requestBean.getSession();		
 		
-		String tch_no = request.getParameter("tch_no");
-		String tch_password = request.getParameter("tch_password");
-		
-		paramMap.put("tch_no", tch_no);
-		paramMap.put("tch_password", tch_password);
 		Map<String, Object> rtn = loginManger.tchLogin(paramMap);
 		
 		if(rtn != null) {
-			session.setAttribute("tch_user", rtn.get("stu_no"));
-			request.getRequestDispatcher("/sch/global/index.jsp").forward(request, response);
+			session.setAttribute("tch_user", rtn.get("stu_no"));			
+			responseBean.setReturnPage("/sch/global/index.jsp");
 		} else {
-			request.setAttribute("ERROR", "帳號密碼錯誤");
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			requestBean.setAttribute("ERROR", "帳號密碼錯誤");
+			responseBean.setReturnPage("/index.jsp");
 		}
 	}
 }
