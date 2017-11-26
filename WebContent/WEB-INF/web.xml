@@ -25,7 +25,7 @@
   </filter>
   <filter-mapping>
   	<filter-name>Login</filter-name>
-  	<!-- 表示攔截所有的請求 -->
+  	<!-- 專門處理登入的filter -->
   	<url-pattern>/login.do</url-pattern>
   </filter-mapping>
   
@@ -59,8 +59,8 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   
-  <error-page>
+  <!-- <error-page>
   	<error-code>500</error-code>
   	<location>/sch/error/error.jsp</location>  	
-  </error-page>
+  </error-page> -->
 </web-app>

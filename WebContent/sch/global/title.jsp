@@ -7,6 +7,6 @@
 <title></title>
 </head>
 <body>
-	登入者 ：${stu_user }
+	登入者 ：${stu_no }
 </body>
 </html>

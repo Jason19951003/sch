@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import sch.core.common.BaseConstant;
 
 @SuppressWarnings("all")
-public abstract class AbstractController {
+public abstract class AbstractController implements BaseController {
 	
 	private HttpServletRequest _request;
 	private HttpServletResponse _response;
@@ -62,8 +62,8 @@ public abstract class AbstractController {
 				return null;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+			e.printStackTrace();			
+			throw new Exception(e);			
 		}
 	}
 	

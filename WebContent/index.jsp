@@ -77,21 +77,19 @@
 
 		<div class="tab_container">
 			<div id="tab1" class="tab_content">
-				<form action="<%=request.getContextPath() %>/login.do" method="post" id="stu_form">
+				<form action="<%=request.getContextPath() %>/login/stuLogin.do" method="post" id="stu_form">
 					帳號：<input type="text" name="stu_no"><span id="validate" style="color:red;">請輸入帳號</span><br><br>
 					密碼：<input type="password" name="stu_password"><span id="validate" style="color:red;">請輸入密碼</span><br><br>
 					<a href="#" class="button glow" onclick="login('stu');"><span>確認登入</span></a>
 					<a href="#" class="button glow" onclick="clean('stu')"><span>清除資料</span></a>
-					<input type="hidden" name="action" value="stuLogin">
 				</form>
 			</div>
 			<div id="tab2" class="tab_content">
-				<form action="<%=request.getContextPath() %>/login.do" method="post" id="tch_form">					
+				<form action="<%=request.getContextPath() %>/login/tchLogin.do" method="post" id="tch_form">
 					帳號：<input type="text" name="tch_no"><span id="validate" style="color:red;">請輸入帳號</span><br><br>
 					密碼：<input type="password" name="tch_password"><span id="validate" style="color:red;">請輸入密碼</span><br><br>
 					<a href="#" class="button glow" onclick="login('tch');"><span>確認登入</span></a>
 					<a href="#" class="button glow" onclick="clean('tch')"><span>清除資料</span></a>
-					<input type="hidden" name="action" value="tchLogin">
 				</form>
 			</div>
 		</div>

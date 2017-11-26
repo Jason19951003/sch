@@ -24,11 +24,11 @@ public interface UserDao {
 	 * @param param
 	 * @return
 	 */
-	public List<Map<String,Object>> select_stu(Map<String, Object> param);
+	public Map<String,Object> select_stu(Map<String, Object> param);
 	/**
 	 * 查詢老師基本資料
 	 * @param param
 	 * @return
 	 */
-	public List<Map<String,Object>> select_tch(Map<String, Object> param);
+	public Map<String,Object> select_tch(Map<String, Object> param);
 }

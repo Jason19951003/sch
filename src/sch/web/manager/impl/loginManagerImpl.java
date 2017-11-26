@@ -13,10 +13,10 @@ import sch.web.manager.loginManager;
 @Scope("prototype")
 public class loginManagerImpl implements loginManager {
 	@Autowired
-	private UserDao userDao;
+	private UserDao userDao;	
 	
 	@Override
-	public Map<String, Object> stuLogin(Map<String, Object> param) {
+	public Map<String, Object> stuLogin(Map<String, Object> param) {		
 		return userDao.stuLogin(param);
 	}
 

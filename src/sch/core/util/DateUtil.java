@@ -19,7 +19,7 @@ public class DateUtil {
 		String dateStr = dateFormat.format(gc.getTime());
 		
 		return dateStr;
-	}
+	}	
 	/**
 	 * 取得民國系統時間 yyyMMDD
 	 * @return yyyMMDD 七碼的民國日期
@@ -33,13 +33,19 @@ public class DateUtil {
 	 * @return yyyMMDD 七碼的民國日期
 	 */
 	public static String CDtoMD(String dateStr) {
-		if(isCDate(dateStr)) 
-			return dateStr;		
+		if(!isCDate(dateStr)) {
+			if(dateStr.length() == 10) {
+				
+			} else {
+				return dateStr;
+			}			
+		}
+			
 		String yyy = String.valueOf(Integer.parseInt(dateStr.substring(0,4)) - 1911).trim();
 		
-		if(yyy.length() == 2) 
+		if(yyy.length() == 2)
 			yyy = "0" + yyy;
-		return yyy + dateStr.substring(4,8);
+		return yyy + dateStr.substring(4,dateStr.length());
 	}
 	/**
 	 * 將民國時間轉為西元 yyyMMDD 轉為yyyyMMDD
@@ -47,11 +53,17 @@ public class DateUtil {
 	 * @return yyyyMMDD 八碼的西元日期
 	 */
 	public static String MDtoCD(String dateStr) {
-		if(isMDate(dateStr)) 
-			return dateStr;		
+		if(!isMDate(dateStr)) {
+			if(dateStr.length() == 9) {
+				
+			} else {
+				return dateStr;
+			}
+		}
+					
 		String yyy = String.valueOf(Integer.parseInt(dateStr.substring(0,3)) + 1911).trim();
 		
-		return yyy + dateStr.substring(3,7);
+		return yyy + dateStr.substring(3,dateStr.length());
 	}
 	/**
 	 * 取得格式化的系統時間　yyy/MM/dd(民國)
@@ -101,6 +113,22 @@ public class DateUtil {
 	 */
 	public static String convertToMDate() {
 		return doM2WDate() + " " + getSysTime();
+	}
+	/**
+	 * 取得完整的西元系統時間 yyyy-MM-DD(可直接寫入資料庫的date)
+	 * @return
+	 */
+	public static String converToDateforDB() {
+		DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.CHINESE);
+		return df.format(new Date());
+	}
+	/**
+	 * 取得完整的西元系統時間 yyyy-MM-DD hh:mm:ss(可直接寫入資料庫的datetime)
+	 * @return
+	 */
+	public static String converToDateTimeforDB() {
+		DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.CHINESE);
+		return df.format(new Date());
 	}
 	/**
 	 * 取得系統完整日期 xxxx年xx月xx日 (西元)
@@ -220,16 +248,20 @@ public class DateUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(DateUtil.doC2WDate());
+		/*System.out.println(DateUtil.doC2WDate());
 		System.out.println(DateUtil.convertToCDate());
 		System.out.println(DateUtil.convertToMDate());
 		System.out.println(DateUtil.getFullCDate());
 		System.out.println(DateUtil.getFullMDate());
 		System.out.println(DateUtil.getSysTime());
-		System.out.println(DateUtil.getFullSysTime());		
+		System.out.println(DateUtil.getFullSysTime());
 		System.out.println(getSysTimeStamp());
 		System.out.println(MDtoCD("1061111"));
 		System.out.println(CDtoMD("20171231"));
 		System.out.println(getFullDate("20170228"));
+		System.out.println(converToDateTimeforDB());
+		System.out.println(converToDateforDB());*/
+		System.out.println(CDtoMD("2017-12-31"));
+		System.out.println(MDtoCD("1061231"));
 	}
 }

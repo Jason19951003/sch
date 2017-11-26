@@ -18,9 +18,7 @@
 				$(this).children("div.direction").css("background-image" , "url('/sch/resource/image/right.png')");
 			} else {
 				$(this).children("div.direction").css("background-image" , "url('/sch/resource/image/down.png')");
-			}
-			
-			$(this).parent().siblings().children("ul").children().slideUp(500);
+			}			
 			
 			$(this).next().children().slideToggle(500);
 		})
