@@ -36,6 +36,10 @@
   		<param-name>location</param-name>
   		<param-value>H:/webapp/Log4j.properties</param-value>
   	</init-param>
+  	<init-param>
+  		<param-name>env</param-name>
+  		<param-value>H:/webapp/env.properties</param-value>
+  	</init-param>
   </filter>
   <filter-mapping>
   	<filter-name>log4j</filter-name>

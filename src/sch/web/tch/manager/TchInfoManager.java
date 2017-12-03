@@ -1,10 +1,10 @@
-package sch.web.manager;
+package sch.web.tch.manager;
 
 import java.util.Map;
 
-public interface StuInfoManager {
+public interface TchInfoManager {
 	/**
-	 * 學生資料主要方法
+	 * 教師資料主要方法
 	 * @param param
 	 * @return
 	 */

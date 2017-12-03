@@ -1,4 +1,4 @@
-package sch.web.stu.controller;
+package sch.web.tch.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import sch.web.controller.RequestBean;
 import sch.web.controller.ResponseBean;
-import sch.web.stu.manager.StuInfoManager;
+import sch.web.tch.manager.TchInfoManager;
 
 @Controller
-@RequestMapping("/StuInfoController.do")
+@RequestMapping("/TchInfoControllerr.do")
 @Scope("prototype")
-public class StuInfoController extends StuController {
+public class TchInfoController extends TchController {
 	
 	@Autowired
-	private StuInfoManager stuInfoManager;
+	private TchInfoManager tchInfoManager;
 	
 	public void processMain(RequestBean requestBean, ResponseBean responseBean, HttpServletResponse response) throws Exception {		
 		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("stu_no", this.getUserNo());
-		Map<String, Object> data = stuInfoManager.processMain(param);				
+		param.put("tch_no", this.getUserNo());
+		Map<String, Object> data = tchInfoManager.processMain(param);				
 		responseBean.setData(data);
 	}
 }

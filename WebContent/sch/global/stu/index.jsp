@@ -12,10 +12,10 @@
 <title>學生管理系統</title>
 </head>
 <frameset rows="15%,*">
-	<frame src="<%=request.getContextPath()%>/sch/global/title.jsp" noresize="noresize" name="title">
+	<frame src="<%=request.getContextPath()%>/sch/global/stu/title.jsp" noresize="noresize" name="title">
 	<frameset cols="15%,*" >
-		<frame src="<%=request.getContextPath()%>/sch/global/menu.jsp" noresize="noresize" name="menu">
-		<frame src="<%=request.getContextPath()%>/sch/global/main.jsp" name="main">
+		<frame src="<%=request.getContextPath()%>/sch/global/stu/menu.jsp" noresize="noresize" name="menu">
+		<frame src="<%=request.getContextPath()%>/sch/global/stu/main.jsp" name="main">
 	</frameset>
 <noframes>
 <body></body>

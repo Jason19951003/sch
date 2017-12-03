@@ -36,8 +36,8 @@ public abstract class AbstractController implements BaseController {
 			this.method = request.getParameter("action");
 			
 			Object obj = getCurrent();
-			Method m = obj.getClass().getMethod(this.method, RequestBean.class, ResponseBean.class);
-			m.invoke(obj, requestBean,responseBean);
+			Method m = obj.getClass().getMethod(this.method, RequestBean.class, ResponseBean.class, HttpServletResponse.class);
+			m.invoke(obj, requestBean, responseBean, _response);
 			
 			switch (responseBean.getReturnType()) {
 			case JSON:

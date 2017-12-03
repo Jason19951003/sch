@@ -22,3 +22,14 @@
   			<li>使用link匯入css檔案時，瀏覽起開啟會有緩存，有更改時，需要清存緩存在開啟網頁，否則會瀏覽器會取得緩存的css</li>
   		</ol> 		
   </p>
+  <p>2017/12/03<br>
+  		<ol>
+  			<li>新增教師登入後的頁面</li>
+  			<li>修改底層Controller方法參數</li>
+  			<li>新增共用的外部設定檔</li>
+  			<li>加入班級資訊的table</li>
+  			<li>新增formUtil.js 以後和表單相關的方法都會想入這</li>
+  			<li>學到css可共用多個class</li>
+  			<li>學到jQuery中find的用法</li>
+  		</ol>
+  </p>

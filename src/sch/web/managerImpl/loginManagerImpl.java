@@ -1,4 +1,4 @@
-package sch.web.manager.impl;
+package sch.web.managerImpl;
 
 import java.util.Map;
 

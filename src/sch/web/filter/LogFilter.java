@@ -1,5 +1,7 @@
 package sch.web.filter;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -10,6 +12,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import org.apache.log4j.PropertyConfigurator;
+
+import sch.core.util.support.ApEnv;
 
 public class LogFilter implements Filter {
 
@@ -26,9 +30,17 @@ public class LogFilter implements Filter {
 	}
 
 	@Override
-	public void init(FilterConfig config) throws ServletException {
-		String location = config.getInitParameter("location");
-		PropertyConfigurator.configure(location);
+	public void init(FilterConfig config) throws ServletException {		
+		try {
+			String location = config.getInitParameter("location");
+			String env = config.getInitParameter("env");
+			PropertyConfigurator.configure(location);
+			ApEnv.load(new FileInputStream(env));
+		} catch (FileNotFoundException e) {			
+			e.printStackTrace();
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
 	}
 
 }

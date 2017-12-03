@@ -1,20 +1,26 @@
 @CHARSET "UTF-8";
-.table-command,.table-command tr{
+.table-command,.table-command tr,.table-edit,.table-edit tr{
 	border-collapse: collapse;
 	border: 1px solid black;
 }
-.table-command td {
+.table-command td,.table-edit td {
 	border: 1px solid black;
 	width: 300px;/*300px*/
 }
-.table-command th {
+.table-command th,.table-edit th {
 	width: 155px;/*200px*/
 	background-color: #0066cc;
 	color: white;
 }
-.table-command td,.table-command th {
+.table-command td,.table-command th,.table-edit td,.table-edit th {
 	height: 30px;
 }
 .table-command td:hover {
 	background-color: #C5DBEC;
+}
+.table-padding {
+	padding: 5px;
+}
+.top {
+	text-align: center;
 }

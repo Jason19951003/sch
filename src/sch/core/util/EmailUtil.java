@@ -1,6 +1,8 @@
 package sch.core.util;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -17,6 +19,8 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
+
+import sch.core.util.support.ApEnv;
 /**
  * Email的工具類
  * @author Jason
@@ -36,7 +40,7 @@ public class EmailUtil {
 	
 	static {
 		try {
-			prop.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("mail.properties"));
+			prop.load(new FileInputStream(ApEnv.get("email")));
 			
 			username = prop.getProperty("mail.smtp.username");
 			password = prop.getProperty("mail.smtp.password");

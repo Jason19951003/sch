@@ -18,7 +18,7 @@
 				$(this).children("div.direction").css("background-image" , "url('/sch/resource/image/right.png')");
 			} else {
 				$(this).children("div.direction").css("background-image" , "url('/sch/resource/image/down.png')");
-			}			
+			}
 			
 			$(this).next().children().slideToggle(500);
 		})
@@ -54,7 +54,7 @@
 		<li>
 			<div class="controll"><div class="direction"></div><div class="item">學生請假系統</div></div>
 			<ul>
-				<li class="detail"><a href="<%=request.getContextPath() %>/sch/stu/leave.jsp" target="main">請假申請與查詢</a></li>
+				<li class="detail"><a href="<%=request.getContextPath() %>/sch/stu/stu_leave.jsp" target="main">請假申請與查詢</a></li>
 			</ul>
 		</li>
 	</ul>

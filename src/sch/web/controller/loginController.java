@@ -36,7 +36,7 @@ public class loginController {
 		if(rtn != null) {			
 			session.setAttribute("stu_no", rtn.get("stu_no"));
 			session.setAttribute("stu_name", rtn.get("stu_name"));
-			request.getRequestDispatcher("/sch/global/index.jsp").forward(request, response);
+			request.getRequestDispatcher("/sch/global/stu/index.jsp").forward(request, response);
 		} else {
 			request.setAttribute("ERROR", "帳號密碼錯誤");
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
@@ -58,6 +58,7 @@ public class loginController {
 		if(rtn != null) {
 			session.setAttribute("tch_no", rtn.get("tch_no"));
 			session.setAttribute("tch_name", rtn.get("tch_name"));
+			request.getRequestDispatcher("/sch/global/tch/index.jsp").forward(request, response);
 		} else {
 			request.setAttribute("ERROR", "帳號密碼錯誤");
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
