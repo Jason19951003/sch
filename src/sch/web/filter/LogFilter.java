@@ -12,6 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.xml.DOMConfigurator;
 
 import sch.core.util.support.ApEnv;
 
@@ -34,7 +35,8 @@ public class LogFilter implements Filter {
 		try {
 			String location = config.getInitParameter("location");
 			String env = config.getInitParameter("env");
-			PropertyConfigurator.configure(location);
+			DOMConfigurator.configure(location);
+			//PropertyConfigurator.configure(location);
 			ApEnv.load(new FileInputStream(env));
 		} catch (FileNotFoundException e) {			
 			e.printStackTrace();

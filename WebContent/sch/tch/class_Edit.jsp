@@ -9,54 +9,66 @@
 	$(document).ready(function() {
 		
 	});
+	
+	function processQuery() {		
+		var formdata =  new FormData($('#queryForm')[0]);
+		var option = {
+			url : "<%=request.getContextPath()%>/ClassInfoController.do?action=processMain"			
+			,data : formdata
+			,success : function (jsonResult) {
+				alert(jsonResult);
+			}
+		}
+		formUtil.submit(option);
+	}
 </script>
-<style type="text/css">
-
-</style>
 </head>
 <body>
 	<div class="table-padding top">
 		<a href="#" class="button button-border">新增</a>&nbsp;&nbsp;
-		<a href="#" class="button button-border">查詢</a>&nbsp;&nbsp;
+		<a href="#" class="button button-border" onclick="processQuery()">查詢</a>&nbsp;&nbsp;
 		<!-- <input type="button" value="新增">&nbsp;&nbsp;
 		<input type="button" value="查詢">&nbsp;&nbsp; -->
 	</div>
 	
 	<div class="table-padding">
-		<table class="table-edit">
-			<tr>
-				<th>科系</th>
-				<td>
-					<select name="series">
-						<option></option>
-						<option value="IM">資管系</option>
-					</select>
-				</td>
-				<th>年級</th>
-				<td>
-					<select name="grade">
-						<option></option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-					</select>
-				</td>
-				<th>班級</th>
-				<td>
-					<select name="classNO">
-						<option></option>
-						<option value="甲">甲</option>
-						<option value="乙">乙</option>
-						<option value="丙">丙</option>
-						<option value="丁">丁</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<th>老師</th><td colspan="5"><input type="text"></td>				
-			</tr>			
-		</table>
+		<form action="" id="queryForm" name="queryForm">
+			<table class="table-edit">
+				<tr>
+					<th>科系</th>
+					<td>
+						<select name="series">
+							<option></option>
+							<option value="IM">資管系</option>
+						</select>
+					</td>
+					<th>年級</th>
+					<td>
+						<select name="grade">
+							<option></option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</td>
+					<th>班級</th>
+					<td>
+						<select name="classNO">
+							<option></option>
+							<option value="甲">甲</option>
+							<option value="乙">乙</option>
+							<option value="丙">丙</option>
+							<option value="丁">丁</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>教師編號</th><td colspan="5"><input type="text" name="tchName"></td>
+				</tr>
+			</table>
+		</form>
 	</div>
+	<div id="tableGrid"></div>
 </body>
 </html>

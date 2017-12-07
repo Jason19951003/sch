@@ -34,7 +34,7 @@
   	<filter-class>sch.web.filter.LogFilter</filter-class>
   	<init-param>
   		<param-name>location</param-name>
-  		<param-value>H:/webapp/Log4j.properties</param-value>
+  		<param-value>H:/webapp/Log4j.xml</param-value>
   	</init-param>
   	<init-param>
   		<param-name>env</param-name>

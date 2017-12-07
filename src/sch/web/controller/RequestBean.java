@@ -86,8 +86,7 @@ public class RequestBean {
 			} else {
 				tranMap.put(key, "");
 			}
-		}
-		
+		}		
 		return tranMap;
 	}
 	/**

@@ -12,7 +12,7 @@
 	
 	function processMain() {		
 		var option = {
-			url : "<%=request.getContextPath()%>/TchInfoControllerr.do?action=processMain"			
+			url : "<%=request.getContextPath()%>/TchInfoController.do?action=processMain"			
 			,data : {}
 			,success : function (jsonResult) {
 				formUtil.binddata({

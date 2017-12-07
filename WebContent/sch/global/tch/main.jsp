@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("h1").css("color" , "blue");
+		
 	});
 </script>
 </head>

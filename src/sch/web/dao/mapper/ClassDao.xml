@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace="sch.web.dao.ClassDao">
+	<select id="query" parameterType="HashMap" resultType="HashMap">
+		select class_series,
+			   class_grade,
+			   class_no,
+			   class_tch,
+			   class_total 
+		from class_info
+		<where>
+			<if test="series != null and series != ''">
+				class_series = #{series}
+			</if>
+			<if test="grade != null and grade != ''">
+				and class_grade = #{grade}
+			</if>
+			<if test="classNO != null and classNO != ''">
+				and class_no = #{classNO}
+			</if>
+			<if test="tchName != null and tchName != ''">
+				and class_tch = #{tchName}
+			</if>
+		</where>
+	</select>
+</mapper>

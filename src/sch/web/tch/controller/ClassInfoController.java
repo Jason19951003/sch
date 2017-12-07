@@ -1,6 +1,6 @@
 package sch.web.tch.controller;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -12,20 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import sch.web.controller.RequestBean;
 import sch.web.controller.ResponseBean;
-import sch.web.tch.manager.TchInfoManager;
+import sch.web.tch.manager.ClassInfoManager;
 
 @Controller
-@RequestMapping("/TchInfoController.do")
+@RequestMapping("/ClassInfoController.do")
 @Scope("prototype")
-public class TchInfoController extends TchController {
+@SuppressWarnings("all")
+public class ClassInfoController extends TchController {
 	
 	@Autowired
-	private TchInfoManager tchInfoManager;
+	private ClassInfoManager ClassInfoManager;
+	
 	
 	public void processMain(RequestBean requestBean, ResponseBean responseBean, HttpServletResponse response) throws Exception {		
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("tch_no", this.getUserNo());
-		Map<String, Object> data = tchInfoManager.processMain(param);				
+		Map<String, Object> param = requestBean.getResultMap();		
+		List<Map<String, Object>> data = ClassInfoManager.processMain(param);
 		responseBean.setData(data);
 	}
 }

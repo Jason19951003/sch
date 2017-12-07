@@ -9,7 +9,7 @@
 		
 	});
 </script>
-<title>學生管理系統</title>
+<title>教師管理系統</title>
 </head>
 <frameset rows="15%,*">
 	<frame src="<%=request.getContextPath()%>/sch/global/tch/title.jsp" noresize="noresize" name="title">

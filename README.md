@@ -33,3 +33,10 @@
   			<li>學到jQuery中find的用法</li>
   		</ol>
   </p>
+  <p>2017/12/03<br>
+  		<ol>
+  			<li>修改log4j(改為xml格式的，使用DOMConfigurator.configure()讀取)</li>
+  			<li>加入查詢班級資訊的功能(尚未寫入表格中，目前只做到從資料庫撈出資料傳回前端</li>
+  			<li>新增BaseConstant的edtiData、GRID_RESULT參數</li>  			
+  		</ol>
+  </p>
