@@ -49,9 +49,7 @@
   					<li>將原本的c3p0連接池改為jndi</li>
   					<li>新增SqlGenerate取得Mybaits的Sql語法和Sql參數</li>
   					<li>SchDaoAdvice執行manager前的AOP切入點(將Dao注入)</li>
-  					<li>DaoFactory控管Dao(取得與創見Dao)</li>
-  					<li>DaoFactory控管Dao(取得與創見Dao)</li>
-  					<li>DaoFactory控管Dao(取得與創見Dao)</li>
+  					<li>DaoFactory控管Dao(取得與創見Dao)</li>  					
   					<li>Query設定查詢的參數、Sql語法用</li>
   					<li>DBResultSetList、DBResultSet為查詢返回的類別(目前只完成DBResultSetList)</li>
   				</ul>
