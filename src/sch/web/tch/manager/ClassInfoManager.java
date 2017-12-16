@@ -9,5 +9,5 @@ public interface ClassInfoManager {
 	 * @param param
 	 * @return
 	 */
-	List<Map<String, Object>> processMain(Map<String, Object> param);
+	List<Map<String, Object>> processMain(Map<String, Object> param) throws Exception;
 }

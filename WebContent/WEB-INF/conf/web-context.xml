@@ -17,45 +17,60 @@
 	http://www.springframework.org/schema/mvc 
 	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">	
 	
-	<context:property-placeholder location="file:H:/webapp/db.properties" />		
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/school"/>
+	</bean>
 	
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">		
-		<property name="driverClass" value="${jdbc.Driver}" />
-		<property name="jdbcUrl" value="${jdbc.Url}" />
-		<property name="user" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-		
-		<property name="maxPoolSize" value="30" />
-		<property name="minPoolSize" value="10" />
-		
-		<property name="autoCommitOnClose" value="false" />		
-		<property name="checkoutTimeout" value="10000" />		
-		<property name="acquireRetryAttempts" value="2" />
-	</bean>		
-	
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="schSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<!-- 需有1個以上的文件才能使用 -->
 		<property name="mapperLocations" value="classpath:sch/web/dao/mapper/*.xml" />
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">		
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />		
+		<property name="sqlSessionFactoryBeanName" value="schSqlSessionFactory" />		
 		<property name="basePackage" value="sch.web.dao" />
 	</bean>
 	<!-- 使用mvc:annotation-driven可代替(註解的適配器、註解得映射器)的配置
 		 使用此方法可以不用配置json交互的bean
-	-->
-	<mvc:annotation-driven/>
+	-->	
 	<!-- 註解掃描 -->
 	<context:component-scan base-package="sch.web"></context:component-scan>
-	<context:component-scan base-package="sch.core"></context:component-scan>
+	<context:component-scan base-package="sch.core.dao"></context:component-scan>
+	<context:component-scan base-package="sch.core.dao.impl"></context:component-scan>
+	<context:component-scan base-package="sch.core.dao.support"></context:component-scan>
+	<context:component-scan base-package="sch.web.dao.support"></context:component-scan>
 	<!-- 使用AOP的註解 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+		
+	<context:annotation-config/>
 	
 	<bean id="jdbc" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
-	</bean>	
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+  		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="schDao" class="sch.web.dao.impl.SchDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="daoFactory" class="sch.core.dao.impl.DaoFactory">
+		<property name="daoCacheMap">
+			<map>
+				<entry key="ds_SchDao" value-ref="schDao"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="myBatisSqlGenerate" class="sch.core.dao.support.MybatisSqlGenerate" destroy-method="close">
+   		<property name="sqlSessionFactory" ref="schSqlSessionFactory" />
+   	</bean>
+   	
+	<!-- AOP切入點 -->
+	<bean id="daoAdvice" class="sch.web.dao.support.SchDaoAdvice"></bean>
     <!-- 上傳文件使用 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize">

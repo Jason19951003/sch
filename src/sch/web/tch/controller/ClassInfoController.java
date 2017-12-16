@@ -6,7 +6,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,11 +20,9 @@ import sch.web.tch.manager.ClassInfoManager;
 @RequestMapping("/ClassInfoController.do")
 @Scope("prototype")
 @SuppressWarnings("all")
-public class ClassInfoController extends TchController {
-	
+public class ClassInfoController extends TchController {	
 	@Autowired
-	private ClassInfoManager ClassInfoManager;
-	
+	private ClassInfoManager ClassInfoManager;	
 	
 	public void processMain(RequestBean requestBean, ResponseBean responseBean, HttpServletResponse response) throws Exception {		
 		Map<String, Object> param = requestBean.getResultMap();		

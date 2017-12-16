@@ -11,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import sch.core.util.support.ApEnv;
@@ -19,8 +18,7 @@ import sch.core.util.support.ApEnv;
 public class LogFilter implements Filter {
 
 	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
+	public void destroy() {		
 		
 	}
 
@@ -31,16 +29,16 @@ public class LogFilter implements Filter {
 	}
 
 	@Override
-	public void init(FilterConfig config) throws ServletException {		
+	public void init(FilterConfig config) throws ServletException {
 		try {
 			String location = config.getInitParameter("location");
 			String env = config.getInitParameter("env");
 			DOMConfigurator.configure(location);
 			//PropertyConfigurator.configure(location);
-			ApEnv.load(new FileInputStream(env));
-		} catch (FileNotFoundException e) {			
+			ApEnv.load(new FileInputStream(env));			
+		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		} catch (IOException e) {			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

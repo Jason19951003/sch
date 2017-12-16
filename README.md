@@ -40,3 +40,21 @@
   			<li>新增BaseConstant的edtiData、GRID_RESULT參數</li>  			
   		</ol>
   </p>
+  <p>2017/12/16 相隔快兩個禮拜終於更新了(不能在懶惰下去啦)
+  		<ol>
+  			<li>ApplicationContextUtil提供一般類別取得Spring外部設定檔所配置的bean</li>
+  			<li>新增ContextFilter每次呼叫Controller時載入Spring設定檔</li>
+  			<li>新增Dao框架
+  				<ul>
+  					<li>將原本的c3p0連接池改為jndi</li>
+  					<li>新增SqlGenerate取得Mybaits的Sql語法和Sql參數</li>
+  					<li>SchDaoAdvice執行manager前的AOP切入點(將Dao注入)</li>
+  					<li>DaoFactory控管Dao(取得與創見Dao)</li>
+  					<li>DaoFactory控管Dao(取得與創見Dao)</li>
+  					<li>DaoFactory控管Dao(取得與創見Dao)</li>
+  					<li>Query設定查詢的參數、Sql語法用</li>
+  					<li>DBResultSetList、DBResultSet為查詢返回的類別(目前只完成DBResultSetList)</li>
+  				</ul>
+  			</li>
+  		</ol>
+  </p>
