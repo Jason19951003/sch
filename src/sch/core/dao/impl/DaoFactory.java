@@ -1,13 +1,13 @@
 package sch.core.dao.impl;
 
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
 import sch.core.util.ApplicationContextUtil;
 import sch.web.dao.SchDao;
 
 public class DaoFactory {
-	private Map<String, SchDao> daoCacheMap = new HashMap<String, SchDao>();
+	private Map<String, SchDao> daoCacheMap = new Hashtable<String, SchDao>();
 	
 	/**
 	 * @param daoMap

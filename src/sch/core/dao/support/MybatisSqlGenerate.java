@@ -45,7 +45,7 @@ public class MybatisSqlGenerate implements SqlGenerate {
 		MappedStatement ms = configuration.getMappedStatement(sqlId);
 		BoundSql  boundsql = ms.getBoundSql(map);
 		return boundsql.getSql();
-	}	
+	}
 	
 	private Object[] getParameters(SqlSessionFactory sqlSessionFactory, String sqlId, Map paraMap) {
 		Configuration configuration = sqlSessionFactory.getConfiguration();

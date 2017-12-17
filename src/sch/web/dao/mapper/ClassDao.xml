@@ -25,4 +25,18 @@
 			</if>
 		</where>
 	</select>
+	
+	<insert id="insert" parameterType="HashMap">
+		INSERT INTO class_info
+		(
+			class_series,
+			class_grade,
+			class_no,
+			class_total,
+			class_tch			
+		) values
+		(
+			#{series},#{grade},#{classNO},50,#{tchName}
+		)
+	</insert>
 </mapper>
