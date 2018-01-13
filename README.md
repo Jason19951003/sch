@@ -56,7 +56,7 @@
   			</li>
   		</ol>
   </p>
-  <p>2017/12/03
+  <p>2017/12/17
   		<ol>
   			<li>加入新增、修改、刪除的方法</li>
   			<li>新增SchTransactionManager管理交易事件(暫時使用PROPAGATION_REQUIRED)</li>
