@@ -1,6 +1,4 @@
-package sch.web.tch.controller;
-
-import sch.web.controller.AbstractController;
+package sch.web.controllerImpl;
 
 public class TchController extends AbstractController {
 

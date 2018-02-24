@@ -19,9 +19,6 @@ public class ClassInfoManagerImpl extends SchWebManager implements ClassInfoMana
 	public List<Map<String, Object>> processMain(Map<String, Object> param) throws Exception {		
 		DBResultSetList dataList = this.getDao().queryForDBResultList(
 				Query.creatQueryBySqlId("sch.web.dao.ClassDao.query", param));
-		int i = this.getDao().insert(Query.creatQueryBySqlId("sch.web.dao.ClassDao.insert", param));
-		System.out.println(i);
-		this.getSchTransactionManager().commit();
 		return (List<Map<String, Object>>) dataList.getDatalist();
 	}
 

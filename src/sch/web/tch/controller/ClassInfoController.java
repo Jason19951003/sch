@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import sch.web.controller.RequestBean;
 import sch.web.controller.ResponseBean;
+import sch.web.controllerImpl.TchController;
 import sch.web.tch.manager.ClassInfoManager;
 
 @Controller

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import sch.web.controller.RequestBean;
 import sch.web.controller.ResponseBean;
+import sch.web.controllerImpl.StuController;
 import sch.web.stu.manager.StuInfoManager;
 
 @Controller

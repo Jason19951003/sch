@@ -1,4 +1,4 @@
-package sch.web.controller;
+package sch.web.controllerImpl;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -12,6 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 
 import sch.core.common.BaseConstant;
+import sch.core.util.LogUtil;
+import sch.web.controller.BaseController;
+import sch.web.controller.RequestBean;
+import sch.web.controller.ResponseBean;
 
 @SuppressWarnings("all")
 public abstract class AbstractController implements BaseController {
@@ -24,7 +28,7 @@ public abstract class AbstractController implements BaseController {
 	
 	
 	@RequestMapping("/")
-	public ModelAndView testController(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView mProccess(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setCharacterEncoding(BaseConstant.SYSTEM_ENCODE_UTF8);
 		response.setContentType(BaseConstant.HTTP_CONTENT_TYPE);
 		try {
@@ -46,6 +50,7 @@ public abstract class AbstractController implements BaseController {
 				}
 				response.getWriter().print(toJsonString(this.responseBean));
 				response.getWriter().close();
+				LogUtil.info(this.getClass(), toJsonString(this.responseBean));
 				return null;
 			case DOWNLOAD:
 				
@@ -54,16 +59,18 @@ public abstract class AbstractController implements BaseController {
 				
 				return null;
 			case SERVER_PAGE_FORWARD:
-				ModelAndView mav = new ModelAndView();				
+				ModelAndView mav = new ModelAndView();
 				mav.setViewName(responseBean.getReturnPage());
+				LogUtil.info(this.getClass(), toJsonString(this.responseBean));
 				return mav;
 				
 			default:
 				return null;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();			
-			throw new Exception(e);			
+			e.printStackTrace();
+			LogUtil.error(this.getClass(), e);
+			throw new Exception(e);
 		}
 	}
 	

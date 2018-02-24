@@ -1,6 +1,4 @@
-package sch.web.stu.controller;
-
-import sch.web.controller.AbstractController;
+package sch.web.controllerImpl;
 
 public class StuController extends AbstractController {
 

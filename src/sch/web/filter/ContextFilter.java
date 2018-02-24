@@ -12,6 +12,7 @@ import javax.servlet.ServletResponse;
 import org.springframework.web.context.support.XmlWebApplicationContext;
 
 import sch.core.util.ApplicationContextUtil;
+import sch.core.util.LogUtil;
 
 public class ContextFilter implements Filter {
 
@@ -23,12 +24,18 @@ public class ContextFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest servletrequest, ServletResponse servletresponse, FilterChain chain)
 			throws IOException, ServletException {
-		//讀取ApplicationContext
-		XmlWebApplicationContext ctx = new XmlWebApplicationContext();
-		ctx.setConfigLocation("/WEB-INF/conf/web-context.xml");
-		ctx.setServletContext(servletrequest.getServletContext());
-		ctx.refresh();
-		ApplicationContextUtil.init(ctx);
+		try {
+			//讀取ApplicationContext
+			XmlWebApplicationContext ctx = new XmlWebApplicationContext();
+			ctx.setConfigLocation("/WEB-INF/conf/web-context.xml");
+			ctx.setServletContext(servletrequest.getServletContext());
+			ctx.refresh();
+			ApplicationContextUtil.init(ctx);
+			LogUtil.info(ContextFilter.class, "init ApplicationContext success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtil.info(ContextFilter.class, "init ApplicationContext error:" + e.getMessage());
+		}		
 		chain.doFilter(servletrequest, servletresponse);
 	}
 

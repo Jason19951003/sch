@@ -14,14 +14,13 @@ import javax.servlet.http.HttpSession;
 public class LoginFilter implements Filter {
 	
 	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
+	public void destroy() {		
 		
 	}
 
 	@Override
 	public void doFilter(ServletRequest servletrequest, ServletResponse servletresponse, FilterChain chain)
-			throws IOException, ServletException {		
+			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) servletrequest;
 		HttpSession session = request.getSession();
 		session.removeAttribute("stu_user");
@@ -35,5 +34,4 @@ public class LoginFilter implements Filter {
 	public void init(FilterConfig config) throws ServletException {
 		
 	}
-
 }
